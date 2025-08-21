@@ -1,0 +1,1 @@
+export { makeSlugFromString } from './helpers';
