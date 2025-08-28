@@ -1,0 +1,73 @@
+### Fast Food Shop - Authentication API Tests
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE1LCJlbWFpbCI6InphbG9AZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaXNzIjoiZmFzdC1mb29kLXNob3AiLCJhdWQiOiJmYXN0LWZvb2Qtc2hvcC11c2VycyIsImlhdCI6MTc1NTc5ODc4OSwiZXhwIjoxNzU1ODAyMzg5fQ.iNDoH0EMOyA6tNy9YpvM_5TqOeoxQ5fhH4Hv9T7ny-4
+@adminToken = admin-token-placeholder
+
+
+### 1. Đăng ký tài khoản mới
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email": "zalo@gmail.com",
+  "password": "Dinhcongmanh1@",
+  "name": "Tien DQ",
+  "phone": "0123456789"
+}
+
+### 2. Đăng nhập
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "zalo@gmail.com",
+  "password": "Dinhcongmanh1@"
+}
+
+### 3. Xem profile (cần token)
+GET http://localhost:3000/api/v1/auth/profile
+Authorization: Bearer {{accessToken}}
+
+### 4. Cập nhật profile (cần token)
+PUT http://localhost:3000/api/v1/auth/profile
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "name": "Updated Test User",
+  "phone": "0987654321"
+}
+
+
+### 5. Đổi mật khẩu (cần token)
+PUT http://localhost:3000/api/v1/auth/change-password
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "currentPassword": "Dinhcongmanh1@",
+  "newPassword": "NewPassword123!"
+}
+
+### 6. Refresh token (cần token)
+POST http://localhost:3000/api/v1/auth/refresh
+Authorization: Bearer {{accessToken}}
+
+### 7. Quên mật khẩu
+POST http://localhost:3000/api/v1/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+### 8. Đăng xuất (cần token)
+POST http://localhost:3000/api/v1/auth/logout
+Authorization: Bearer {{accessToken}}
+
+### 9. Test quyền admin (cần token admin)
+GET http://localhost:3000/api/v1/auth/admin/users
+Authorization: Bearer {{adminToken}}
+
+### 10. Test quyền admin (cần token admin)
+GET http://localhost:3000/api/v1/auth/admin/stats
+Authorization: Bearer {{adminToken}}

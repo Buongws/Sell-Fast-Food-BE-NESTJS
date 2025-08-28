@@ -14,9 +14,20 @@ import { Order } from './order.model';
 import { Cart } from './carts.model';
 import { UserCoupon } from './user-coupon.model';
 import { Review } from './review.model';
+import * as bcrypt from 'bcryptjs';
+
+export interface UserCreationAttributes {
+  email: string;
+  password: string;
+  name: string;
+  avatar?: string;
+  phone?: string;
+  role?: UserRole;
+  provider?: string;
+}
 
 @Table
-export class User extends Model<User> {
+export class User extends Model<User, UserCreationAttributes> {
   @PrimaryKey
   @AutoIncrement
   @Column({ type: DataType.INTEGER })
@@ -62,4 +73,9 @@ export class User extends Model<User> {
 
   @HasMany(() => Review)
   reviews: Review[];
+
+  async comparePassword(password: string) {
+    const hashedPassword = this.getDataValue('password');
+    return await bcrypt.compare(password, hashedPassword);
+  }
 }
