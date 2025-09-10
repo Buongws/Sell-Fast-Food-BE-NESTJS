@@ -2,6 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
 import { Dialect } from 'sequelize';
 import { User } from '@/models';
+import { PasswordResetToken } from '@/models/password-reset-token.model';
 import { Category } from '@/models/category.model';
 import { Product } from '@/models/product.model';
 import { ProductVariant } from '@/models/product-variant.model';
@@ -47,5 +48,6 @@ export const getSequelizeConfig = (
     Address,
     CartItemIngredient,
     Coupon,
+    PasswordResetToken,
   ],
 });

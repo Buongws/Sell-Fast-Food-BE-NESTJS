@@ -1,10 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { StringRequired } from '@/common/decorators';
 import { Matches, MaxLength, MinLength } from 'class-validator';
 
 export class ChangePasswordDto {
+  @ApiProperty({ example: 'OldPassw0rd!' })
   @StringRequired('Current Password')
   currentPassword: string;
 
+  @ApiProperty({ example: 'NewPassw0rd!' })
   @StringRequired('New Password')
   @MinLength(8)
   @MaxLength(32)

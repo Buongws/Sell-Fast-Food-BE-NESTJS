@@ -13,3 +13,4 @@ export { Order } from './order.model';
 export { OrderItem } from './order-item.model';
 export { OrderItemIngredient } from './order-item-ingredient.model';
 export { Review } from './review.model';
+export { PasswordResetToken } from './password-reset-token.model';
