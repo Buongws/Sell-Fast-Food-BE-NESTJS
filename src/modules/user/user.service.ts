@@ -27,7 +27,6 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return user;
   }
 
@@ -39,7 +38,6 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return user;
   }
 
@@ -113,6 +111,18 @@ export class UserService {
     );
 
     return { message: 'Password changed successfully' };
+  }
+
+  async updatePasswordById(userId: number, newPassword: string) {
+    const saltRounds =
+      Number(this.configService.get('BCRYPT_SALT_ROUNDS')) || 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+    await this.userModel.update(
+      { password: hashedNewPassword },
+      { where: { id: userId } },
+    );
+    return { message: 'Password updated' };
   }
 
   async getProfile(userId: number) {

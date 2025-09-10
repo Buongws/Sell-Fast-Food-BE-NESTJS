@@ -1,5 +1,5 @@
 ### Fast Food Shop - Authentication API Tests
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE1LCJlbWFpbCI6InphbG9AZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaXNzIjoiZmFzdC1mb29kLXNob3AiLCJhdWQiOiJmYXN0LWZvb2Qtc2hvcC11c2VycyIsImlhdCI6MTc1NTc5ODc4OSwiZXhwIjoxNzU1ODAyMzg5fQ.iNDoH0EMOyA6tNy9YpvM_5TqOeoxQ5fhH4Hv9T7ny-4
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2LCJlbWFpbCI6InphbG8xQGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsImlzcyI6ImZhc3QtZm9vZC1zaG9wIiwiYXVkIjoiZmFzdC1mb29kLXNob3AtdXNlcnMiLCJpYXQiOjE3NTcxNDAxNzMsImV4cCI6MTc1NzE0Mzc3M30.jNE2iC7UcXhIm-FYGp2V5awd-7wOgpV0rkr7vdFJjiI
 @adminToken = admin-token-placeholder
 
 
@@ -8,7 +8,7 @@ POST http://localhost:3000/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "email": "zalo@gmail.com",
+  "email": "zalo1@gmail.com",
   "password": "Dinhcongmanh1@",
   "name": "Tien DQ",
   "phone": "0123456789"
@@ -19,22 +19,8 @@ POST http://localhost:3000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "zalo@gmail.com",
-  "password": "Dinhcongmanh1@"
-}
-
-### 3. Xem profile (cần token)
-GET http://localhost:3000/api/v1/auth/profile
-Authorization: Bearer {{accessToken}}
-
-### 4. Cập nhật profile (cần token)
-PUT http://localhost:3000/api/v1/auth/profile
-Authorization: Bearer {{accessToken}}
-Content-Type: application/json
-
-{
-  "name": "Updated Test User",
-  "phone": "0987654321"
+  "email": "zalo1@gmail.com",
+  "password": "NewPassword123!"
 }
 
 
